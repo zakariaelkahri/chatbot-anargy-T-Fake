@@ -1,6 +1,5 @@
 from langchain_ollama import ChatOllama
-
-
+from backend.app.core.config import settings
 
 
 
