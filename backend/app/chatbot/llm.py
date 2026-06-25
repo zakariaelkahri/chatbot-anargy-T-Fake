@@ -1,5 +1,7 @@
 from langchain_ollama import ChatOllama
-from backend.app.core.config import settings
+
+# from app.llm.tools import items, customers, sales_orders 
+from app.core.config import settings
 
 
 
@@ -12,3 +14,7 @@ def local_model():
         num_predict=settings.OLLAMA_NUM_PREDICT,
     )
     return llm
+
+# llm = local_model()
+# question = llm.invoke("What is the capital of France?")
+# print(question.content)  # Output: "The capital of France is Paris."
