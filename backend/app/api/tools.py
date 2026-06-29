@@ -7,7 +7,7 @@ router = APIRouter(prefix="/chatbot", tags=["Chatbot"])
 
 
 
-@router.get("/agent")
+@router.post("/agent")
 def get_agent_response(query: str):
     """
     Get a response from the chatbot agent based on the provided query.

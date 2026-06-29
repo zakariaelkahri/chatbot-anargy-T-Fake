@@ -5,20 +5,20 @@ from app.core.config import settings
 
 
 def _frappe_get(resource: str) -> dict:
-        if not settings.FRAPPE_AUTH_TOKEN:
-                return {"error": "FRAPPE_AUTH_TOKEN is not configured"}
+        # if not settings.FRAPPE_AUTH_TOKEN:
+        #         return {"error": "FRAPPE_AUTH_TOKEN is not configured"}
 
-        url = f"{settings.FRAPPE_BASE_URL}/api/resource/{resource}"
+        url = f"http://172.26.144.1:8080/api/resource/{resource}"
         response = requests.get(
                 url,
-                headers={"Authorization": settings.FRAPPE_AUTH_TOKEN},
-                timeout=10,
+                headers={"Authorization": "token 626c7b10b45a3f6:f03cf008ef463a8"},
+                # timeout=10,
         )
         response.raise_for_status()
         return response.json()
 
 @tool
-def items(query: str) -> dict:
+def items() -> dict:
         """
         Fetch ERP items/products. Use ONLY when the user explicitly asks about items or products.
         query: describe what item information is needed (e.g. 'list all items', 'find item SKU001').
@@ -28,7 +28,7 @@ def items(query: str) -> dict:
 
 
 @tool
-def customers(query: str) -> dict:
+def customers() -> dict:
         """
         Fetch ERP customers. Use ONLY when the user explicitly asks about customers.
         query: describe what customer information is needed (e.g. 'list all customers', 'find customer John').
@@ -38,7 +38,7 @@ def customers(query: str) -> dict:
 
 
 @tool
-def sales_orders(query: str) -> dict:
+def sales_orders() -> dict:
         """
         Fetch ERP sales orders. Use ONLY when the user explicitly asks about sales orders.
         query: describe what order information is needed (e.g. 'list sales orders', 'order SO-0001 status').

@@ -50,7 +50,7 @@ export default function App() {
     setMessages(prev => [...prev, { role: 'user', text: query }])
     setLoading(true)
     try {
-      const res = await fetch(`${API}/chatbot/agent?query=${encodeURIComponent(query)}`)
+      const res = await fetch(`${API}/chatbot/agent?query=${encodeURIComponent(query)}`, { method: 'POST'})
       const data = await res.json()
       setMessages(prev => [...prev, { role: 'assistant', text: data.response ?? 'No response.' }])
     } catch {

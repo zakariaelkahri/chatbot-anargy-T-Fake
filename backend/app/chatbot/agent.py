@@ -4,7 +4,7 @@ from app.chatbot.prompt import prompt
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 
 llm = local_model()
-binder = create_tool_calling_agent( llm, TOOLS, prompt)
+binder = create_tool_calling_agent( llm, TOOLS,prompt)
 
 agent = AgentExecutor(
     agent=binder,
