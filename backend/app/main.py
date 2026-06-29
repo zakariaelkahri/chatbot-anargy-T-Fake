@@ -6,7 +6,7 @@ from app.api import tools
 
 
 
-app = FastAPI( title="Anargy API", description="Energy API for managing items and resources", version="1.0.0",tags=["Energy API"])
+app = FastAPI( title="Energy API", description="Energy API for managing items and resources", version="1.0.0",tags=["Energy API"])
 
 
 

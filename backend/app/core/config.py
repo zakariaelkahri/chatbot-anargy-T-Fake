@@ -19,6 +19,10 @@ class Settings(BaseSettings):
     OLLAMA_NUM_PREDICT: int = 256
     OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text"
 
+    # Frappe / ERPNext Settings
+    FRAPPE_BASE_URL: str = "http://172.23.176.1:8080"
+    FRAPPE_AUTH_TOKEN: Optional[str] = None
+
     class Config:
         env_file = ".env"
         case_sensitive = True

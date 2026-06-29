@@ -10,6 +10,8 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL}
       OLLAMA_MODEL: ${OLLAMA_MODEL}
+      FRAPPE_BASE_URL: ${FRAPPE_BASE_URL}
+      FRAPPE_AUTH_TOKEN: ${FRAPPE_AUTH_TOKEN}
     volumes:
       - ./backend:/app
       - ./data:/data:ro
@@ -37,18 +39,6 @@ services:
       - backend
     networks:
       - chatbot-network
-
-  # ollama:
-  #   build:
-  #     context: ./ollama
-  #     dockerfile: Dockerfile
-  #   container_name: ${PROJECT_NAME}-ollama
-  #   ports:
-  #     - "${OLLAMA_PORT}:11434"
-  #   volumes:
-  #     - ollama-data:/root/.ollama
-  #   networks:
-  #     - chatbot-network
 
   ollama:
     image: ollama/ollama:latest
