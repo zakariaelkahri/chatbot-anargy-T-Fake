@@ -1,6 +1,6 @@
 from fastapi import FastAPI 
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import tools
+from app.api import agent
 
 
 
@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 
-app.include_router(tools.router)
+app.include_router(agent.router)
 
 
 

@@ -18,6 +18,8 @@ class Settings(BaseSettings):
     OLLAMA_NUM_CTX: int = 2048
     OLLAMA_NUM_PREDICT: int = 256
     OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text"
+    GEMINI_API_KEY: Optional[str] = None
+    GEMINI_MODEL: str = "gemini-1.5-flash"
 
     # Frappe / ERPNext Settings
     FRAPPE_BASE_URL: str = "http://172.26.144.1:8080"

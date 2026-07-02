@@ -8,7 +8,7 @@ def _frappe_get(resource: str) -> dict:
         # if not settings.FRAPPE_AUTH_TOKEN:
         #         return {"error": "FRAPPE_AUTH_TOKEN is not configured"}
 
-        url = f"http://172.26.144.1:8080/api/resource/{resource}"
+        url = f"http://192.168.112.1:8080/api/resource/{resource}"
         response = requests.get(
                 url,
                 headers={"Authorization": "token 626c7b10b45a3f6:f03cf008ef463a8"},
@@ -18,13 +18,14 @@ def _frappe_get(resource: str) -> dict:
         return response.json()
 
 @tool
-def items() -> dict:
-        """
-        Fetch ERP items/products. Use ONLY when the user explicitly asks about items or products.
-        query: describe what item information is needed (e.g. 'list all items', 'find item SKU001').
-        DO NOT call for greetings, small talk, jokes, or anything unrelated to ERP items.
-        """
-        return _frappe_get("Item")
+def out_of_context() -> dict:
+
+        """Use this tool when the user's question is out of context or unrelated to ERP functionality.
+        This includes greetings, small talk, jokes, general questions, or anything that doesn't pertain to ERP items, customers, or sales orders.
+        Call this tool to handle conversations that fall outside the scope of ERP data retrieval.
+        """        
+        return "I cannot answer that."
+
 
 
 @tool
@@ -36,6 +37,14 @@ def customers() -> dict:
         """
         return _frappe_get("Customer")
 
+@tool
+def items() -> dict:
+        """
+        Fetch ERP items/products. Use ONLY when the user explicitly asks about items or products.
+        query: describe what item information is needed (e.g. 'list all items', 'find item SKU001').
+        DO NOT call for greetings, small talk, jokes, or anything unrelated to ERP items.
+        """
+        return _frappe_get("Item")
 
 @tool
 def sales_orders() -> dict:
@@ -46,4 +55,8 @@ def sales_orders() -> dict:
         """
         return _frappe_get("Sales Order")
 
-TOOLS = [items, customers, sales_orders]
+
+
+
+
+TOOLS = [items, customers, sales_orders,out_of_context]
